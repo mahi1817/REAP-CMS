@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;family=Newsreader:wght@500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#002045",
+                    "on-secondary-fixed": "#241a00",
+                    "on-tertiary-fixed": "#191c1e",
+                    "surface-dim": "#ccdbf4",
+                    "on-surface": "#0d1c2f",
+                    "primary-container": "#1a365d",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#dde9ff",
+                    "surface-tint": "#455f88",
+                    "background": "#f8f9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#e0e3e5",
+                    "on-primary-container": "#86a0cd",
+                    "on-surface-variant": "#43474e",
+                    "inverse-surface": "#233144",
+                    "on-secondary-container": "#745c00",
+                    "surface": "#f8f9ff",
+                    "surface-container": "#e6eeff",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#ebf1ff",
+                    "primary-fixed-dim": "#adc7f7",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c4c6cf",
+                    "tertiary": "#1d2123",
+                    "secondary-fixed": "#ffe088",
+                    "secondary-fixed-dim": "#e9c349",
+                    "on-background": "#0d1c2f",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f8f9ff",
+                    "on-tertiary-container": "#9c9fa1",
+                    "outline": "#74777f",
+                    "on-secondary-fixed-variant": "#574500",
+                    "surface-container-highest": "#d5e3fd",
+                    "secondary-container": "#fed65b",
+                    "on-tertiary-fixed-variant": "#444749",
+                    "tertiary-container": "#333638",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "primary-fixed": "#d6e3ff",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#c4c7c9",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#eff4ff",
+                    "secondary": "#735c00",
+                    "inverse-primary": "#adc7f7",
+                    "on-primary-fixed": "#001b3c",
+                    "surface-variant": "#d5e3fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "section-padding": "80px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Public Sans"],
+                    "h1": ["Newsreader"],
+                    "button": ["Public Sans"],
+                    "body-sm": ["Public Sans"],
+                    "h2": ["Newsreader"],
+                    "label-caps": ["Public Sans"],
+                    "h3": ["Newsreader"],
+                    "body-md": ["Public Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "button": ["14px", {"lineHeight": "1", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h2": ["36px", {"lineHeight": "1.25", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "h3": ["28px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8f9ff;
+        }
+        .nav-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Utility Bar -->
+<div class="fixed top-0 left-0 w-full z-[60] bg-primary text-on-primary h-8 flex items-center justify-between px-gutter text-[11px] font-label-caps tracking-wider border-b border-white/10">
+<div class="flex items-center gap-6">
+<a class="flex items-center gap-1.5 hover:text-secondary-fixed transition-colors" href="mailto:support@reap2024.org">
+<span class="material-symbols-outlined text-[14px]">mail</span>
+            support@reap2024.org
+        </a>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">call</span>
+            +91 141 2715082
+        </div>
+</div>
+<div class="flex items-center gap-4">
+<a class="hover:text-secondary-fixed transition-colors" href="#">FAQS</a>
+<a class="hover:text-secondary-fixed transition-colors" href="#">DOWNLOADS</a>
+<div class="flex items-center gap-3 ml-2 border-l border-white/20 pl-4">
+<a class="hover:text-secondary-fixed transition-colors" href="#"><i class="text-[12px] uppercase">fb</i></a>
+<a class="hover:text-secondary-fixed transition-colors" href="#"><i class="text-[12px] uppercase">tw</i></a>
+<a class="hover:text-secondary-fixed transition-colors" href="#"><i class="text-[12px] uppercase">li</i></a>
+</div>
+</div>
+</div>
+<!-- Main Top Header -->
+<header class="fixed top-8 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface-container-lowest dark:bg-primary-container border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded">
+<span class="material-symbols-outlined text-on-primary text-2xl">school</span>
+</div>
+<span class="font-h3 text-h3 font-bold text-primary dark:text-on-primary-container leading-none">REAP <span class="text-secondary">2024</span></span>
+</div>
+<nav class="hidden lg:flex items-center gap-1">
+<div class="relative nav-dropdown px-3 py-5 cursor-pointer group">
+<div class="flex items-center gap-1 font-button text-button text-on-surface-variant group-hover:text-primary">
+                    ADMISSIONS <span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="dropdown-menu hidden absolute top-full left-0 w-48 bg-white shadow-xl border border-outline-variant rounded-b-lg py-2">
+<a class="block px-4 py-2 hover:bg-surface-container text-body-sm" href="#">Instructions</a>
+<a class="block px-4 py-2 hover:bg-surface-container text-body-sm" href="#">Seat Matrix</a>
+<a class="block px-4 py-2 hover:bg-surface-container text-body-sm" href="#">Fee Structure</a>
+</div>
+</div>
+<div class="relative nav-dropdown px-3 py-5 cursor-pointer group">
+<div class="flex items-center gap-1 font-button text-button text-on-surface-variant group-hover:text-primary">
+                    INSTITUTIONS <span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+<a class="px-3 py-5 font-button text-button text-on-surface-variant hover:text-primary" href="#">SCHEDULE</a>
+<a class="px-3 py-5 font-button text-button text-on-surface-variant hover:text-primary" href="#">CONTACT</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end mr-2">
+<span class="font-button text-[12px] text-primary">Siddharth Sharma</span>
+<span class="text-[10px] text-on-surface-variant font-label-caps">ID: REAP-2024-8821</span>
+</div>
+<div class="relative group cursor-pointer">
+<img alt="User Profile" class="w-10 h-10 rounded-full border-2 border-primary/10 group-hover:border-primary transition-all object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ujxiUnsVPsHVRgQrFNmW5evWQ0kqCm1uchvJbZi-QW_ovX_3kG4Dyu6WSOk9ePoqneKijtKeH-Tp0W3be9fiJVKXBGdhJnevQ_KLssALsiN3T50bVRy95Z-056nSc0gzUxNjFPq4YS-wBGxgj3cEgA8V_EL-H17-Ce2hQYQvetyIjtPv3HaE1qQoKNKtwW20O5Z4xW44iADXM2SoQcXRnzQjEUjvr0fvQlkMFIpcH6FhlsBExSMuCwL5Ejzl9MskcfAhwOewsaLZhw"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
+</div>
+<button class="ml-2 p-2 hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">logout</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-24 h-[calc(100vh-96px)] w-20 bg-surface-container-lowest dark:bg-surface-container-low border-r border-outline-variant flex flex-col pt-4 pb-6 z-40"><button class="absolute -right-3 top-4 w-6 h-6 bg-surface-container-lowest border border-outline-variant rounded-full flex items-center justify-center shadow-sm hover:bg-surface-container hover:border-primary/30 transition-all z-50 group">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</button>
+<div class="flex flex-col items-center gap-6 w-full">
+<!-- Search Icon -->
+<button class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</button>
+<!-- Main Section -->
+<div class="w-full flex flex-col items-center gap-2">
+<span class="text-[10px] font-bold text-on-surface-variant/50 tracking-tighter uppercase mb-1">Main</span>
+<a class="w-12 h-12 flex items-center justify-center rounded-2xl text-on-surface-variant hover:bg-surface-container-high transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">dashboard</span>
+</a>
+<a class="w-12 h-12 flex items-center justify-center rounded-2xl bg-primary text-on-primary shadow-lg shadow-primary/20 transition-all" href="#">
+<span class="material-symbols-outlined">edit_square</span>
+</a>
+<a class="w-12 h-12 flex items-center justify-center rounded-2xl text-on-surface-variant hover:bg-surface-container-high transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">verified_user</span>
+</a>
+<a class="w-12 h-12 flex items-center justify-center rounded-2xl text-on-surface-variant hover:bg-surface-container-high transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">settings</span>
+</a>
+</div>
+<div class="w-8 h-px bg-outline-variant/30"></div>
+<!-- Messages/Support Section -->
+<div class="w-full flex flex-col items-center gap-2">
+<span class="text-[10px] font-bold text-on-surface-variant/50 tracking-tighter uppercase mb-1">Messages</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-high text-primary hover:bg-primary/10 transition-all">
+<span class="material-symbols-outlined text-[20px]">headset_mic</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+</button>
+</div>
+</div>
+<div class="mt-auto flex flex-col items-center gap-4">
+<div class="relative group cursor-pointer">
+<img alt="User Profile" class="w-12 h-12 rounded-2xl border-2 border-primary/5 group-hover:border-primary transition-all object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ujxiUnsVPsHVRgQrFNmW5evWQ0kqCm1uchvJbZi-QW_ovX_3kG4Dyu6WSOk9ePoqneKijtKeH-Tp0W3be9fiJVKXBGdhJnevQ_KLssALsiN3T50bVRy95Z-056nSc0gzUxNjFPq4YS-wBGxgj3cEgA8V_EL-H17-Ce2hQYQvetyIjtPv3HaE1qQoKNKtwW20O5Z4xW44iADXM2SoQcXRnzQjEUjvr0fvQlkMFIpcH6FhlsBExSMuCwL5Ejzl9MskcfAhwOewsaLZhw"/>
+<div class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 border-2 border-white rounded-full"></div>
+</div>
+</div></aside>
+<!-- Main Content Canvas -->
+<main class="ml-20 mt-24 p-gutter min-h-screen">
+<div class="max-w-container-max mx-auto space-y-8 pb-12">
+<!-- Academic Stepper -->
+<section class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-8 shadow-sm">
+<div class="flex items-center justify-between max-w-4xl mx-auto relative">
+<!-- Background Line -->
+<div class="absolute top-5 left-0 w-full h-[2px] bg-surface-container-high z-0"></div>
+<!-- Step 1 Done -->
+<div class="relative z-10 flex flex-col items-center gap-3 flex-1">
+<div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center shadow-lg shadow-green-200">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-caps text-[11px] text-on-surface-variant">Registration</span>
+</div>
+<!-- Step 2 Done -->
+<div class="relative z-10 flex flex-col items-center gap-3 flex-1">
+<div class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center shadow-lg shadow-green-200">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-caps text-[11px] text-on-surface-variant">Documents</span>
+</div>
+<!-- Step 3 Active -->
+<div class="relative z-10 flex flex-col items-center gap-3 flex-1">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg shadow-primary/30 ring-4 ring-primary/10">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+</div>
+<span class="font-label-caps text-[11px] text-primary font-bold">Choice Filling</span>
+</div>
+<!-- Step 4 Pending -->
+<div class="relative z-10 flex flex-col items-center gap-3 flex-1">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest border-2 border-surface-container-high text-on-surface-variant/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">lock</span>
+</div>
+<span class="font-label-caps text-[11px] text-on-surface-variant/40">Seat Allotment</span>
+</div>
+</div>
+</section>
+<!-- Choice Filling Workspace -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Left Sidebar: Filter and Add Choices -->
+<aside class="col-span-4 space-y-6"><button class="absolute -right-3 top-4 w-6 h-6 bg-surface-container-lowest border border-outline-variant rounded-full flex items-center justify-center shadow-sm hover:bg-surface-container hover:border-primary/30 transition-all z-50 group">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</button>
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant p-6 shadow-sm">
+<h3 class="font-h3 text-h3 text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">add_circle</span>
+                        Add New Choice
+                    </h3>
+<div class="space-y-5">
+<div>
+<label class="font-label-caps text-[11px] text-on-surface-variant block mb-2 uppercase tracking-wider">College Type</label>
+<select class="w-full border border-outline-variant rounded-xl p-3.5 focus:ring-2 focus:ring-primary focus:outline-none bg-surface-bright text-body-md">
+<option>Government Colleges</option>
+<option>SFS Colleges</option>
+<option>Private Universities</option>
+</select>
+</div>
+<div>
+<label class="font-label-caps text-[11px] text-on-surface-variant block mb-2 uppercase tracking-wider">Branch / Discipline</label>
+<select class="w-full border border-outline-variant rounded-xl p-3.5 focus:ring-2 focus:ring-primary focus:outline-none bg-surface-bright text-body-md">
+<option>Computer Science &amp; Engineering</option>
+<option>Electronics &amp; Comm. Engineering</option>
+<option>Information Technology</option>
+<option>Mechanical Engineering</option>
+</select>
+</div>
+<div class="relative">
+<label class="font-label-caps text-[11px] text-on-surface-variant block mb-2 uppercase tracking-wider">Search Institution</label>
+<div class="relative">
+<input class="w-full border border-outline-variant rounded-xl p-3.5 focus:ring-2 focus:ring-primary focus:outline-none bg-surface-bright pl-11 text-body-md" placeholder="e.g. MBM Engineering College" type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 font-button text-button rounded-xl hover:bg-primary-container transition-all active:scale-[0.98] shadow-lg shadow-primary/10 mt-2">
+                            Filter Institutions
+                        </button>
+</div>
+</div>
+<!-- Informational Card -->
+<div class="bg-primary text-on-primary rounded-2xl p-7 shadow-xl relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="font-h3 text-h3 mb-4">Instructions</h4>
+<ul class="space-y-4 font-body-sm text-body-sm">
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined text-secondary text-lg mt-0.5">info</span>
+<span class="opacity-90">You can add as many choices as you want to increase chances.</span>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined text-secondary text-lg mt-0.5">info</span>
+<span class="opacity-90">Choices can be modified until the final lock date (Aug 24).</span>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined text-secondary text-lg mt-0.5">info</span>
+<span class="opacity-90">Prioritize your top choices at the higher ranks carefully.</span>
+</li>
+</ul>
+</div>
+<div class="absolute -bottom-10 -right-10 opacity-10 group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-[140px]">school</span>
+</div>
+</div>
+</aside>
+<!-- Right Content: Selected Choices List -->
+<section class="col-span-8 space-y-4">
+<div class="flex items-center justify-between mb-4 px-2">
+<div>
+<h3 class="font-h3 text-h3 text-primary mb-1">Priority List</h3>
+<p class="text-body-sm text-on-surface-variant">Arrange your choices in order of preference.</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="bg-primary/5 px-4 py-2 rounded-full">
+<span class="text-body-sm font-semibold text-primary">4 Choices Selected</span>
+</div>
+<button class="text-error font-button text-button flex items-center gap-1.5 hover:bg-error-container/20 px-3 py-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm">delete_sweep</span> Clear All
+                        </button>
+</div>
+</div>
+<!-- Choice Item 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-5 flex items-center gap-5 hover:shadow-lg hover:border-primary/20 transition-all group">
+<div class="bg-primary text-on-primary w-12 h-12 flex items-center justify-center rounded-xl font-bold text-h3 shrink-0 shadow-lg shadow-primary/10">1</div>
+<div class="flex-1">
+<h4 class="font-body-lg text-body-lg text-primary font-bold group-hover:text-primary transition-colors">MBM Engineering College, Jodhpur</h4>
+<div class="flex items-center gap-3 mt-1">
+<span class="px-2 py-0.5 bg-surface-container-high rounded text-[11px] font-label-caps text-on-surface-variant">SFS Seat</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Computer Science and Engineering</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex flex-col gap-1.5">
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-primary transition-colors disabled:opacity-20 disabled:pointer-events-none" disabled="">
+<span class="material-symbols-outlined">expand_less</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+<button class="p-3 text-on-surface-variant hover:text-error hover:bg-error-container rounded-xl transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Choice Item 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-5 flex items-center gap-5 hover:shadow-lg hover:border-primary/20 transition-all group">
+<div class="bg-surface-container-high text-on-surface-variant w-12 h-12 flex items-center justify-center rounded-xl font-bold text-h3 shrink-0">2</div>
+<div class="flex-1">
+<h4 class="font-body-lg text-body-lg text-primary font-bold">CTAE, Udaipur</h4>
+<div class="flex items-center gap-3 mt-1">
+<span class="px-2 py-0.5 bg-surface-container-high rounded text-[11px] font-label-caps text-on-surface-variant">GAS Seat</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Information Technology</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex flex-col gap-1.5">
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined">expand_less</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+<button class="p-3 text-on-surface-variant hover:text-error hover:bg-error-container rounded-xl transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Choice Item 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-5 flex items-center gap-5 hover:shadow-lg hover:border-primary/20 transition-all group">
+<div class="bg-surface-container-high text-on-surface-variant w-12 h-12 flex items-center justify-center rounded-xl font-bold text-h3 shrink-0">3</div>
+<div class="flex-1">
+<h4 class="font-body-lg text-body-lg text-primary font-bold">Government Engineering College, Ajmer</h4>
+<div class="flex items-center gap-3 mt-1">
+<span class="px-2 py-0.5 bg-surface-container-high rounded text-[11px] font-label-caps text-on-surface-variant">GAS Seat</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Computer Science and Engineering</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex flex-col gap-1.5">
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined">expand_less</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+<button class="p-3 text-on-surface-variant hover:text-error hover:bg-error-container rounded-xl transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Empty State / Add Suggestion -->
+<div class="border-2 border-dashed border-outline-variant rounded-2xl p-16 flex flex-col items-center justify-center text-on-surface-variant bg-surface-container-low/20 group hover:bg-primary/5 transition-colors cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl text-primary">add</span>
+</div>
+<p class="font-body-lg text-body-lg text-primary font-semibold mb-1">Add Another Choice</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Drag institutions here or use the filter on the left</p>
+</div>
+<!-- Submit Footer -->
+<div class="flex items-center justify-between pt-10 border-t border-outline-variant mt-6">
+<div class="flex items-center gap-3 px-4 py-2 bg-yellow-50 rounded-lg border border-yellow-100">
+<span class="material-symbols-outlined text-yellow-600">lock_open</span>
+<span class="font-body-sm text-body-sm text-yellow-800 italic font-medium">Choices are currently unlocked and modifiable.</span>
+</div>
+<div class="flex gap-4">
+<button class="px-8 py-3.5 border border-primary text-primary font-button text-button rounded-xl hover:bg-primary/5 transition-colors">
+                            Save Progress
+                        </button>
+<button class="px-12 py-3.5 bg-secondary-container text-on-secondary-container font-button text-button rounded-xl shadow-lg shadow-secondary/20 hover:shadow-xl transition-all active:scale-95 border border-secondary font-bold text-md">
+                            Final Submit
+                        </button>
+</div>
+</div>
+</section>
+</div>
+<!-- Bento Grid Section: Insights & Related Data -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12">
+<div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant hover:shadow-md transition-shadow">
+<h5 class="font-label-caps text-label-caps text-primary font-bold mb-4 tracking-widest flex items-center justify-between">
+                    LAST YEAR CUTOFFS
+                    <span class="material-symbols-outlined text-lg">trending_up</span>
+</h5>
+<img alt="Analytics Dashboard" class="w-full h-32 object-cover rounded-xl mb-4 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida/ADBb0ujw4GJlhv3VvICRlrzn0ydRanxkfc5LeRv6GL99iJdEwyxb89UcMfB4PzwkAcrKdUUDjb6BeK_gnsBR_8-mKFunjlsn7XkZpf0a4sBEXhhdBm-6dIjnqyuIynqy3XD3ZzvyGay-V8P5dgqQtTqouNfGEIhkPUdV1gZhX0x9UW0QGr27iS9Dqden-H5jdgrL4sVBSSoucUDLRpSeSRmxsGppJIviuCvwdfIiui9RgeqhkhaqENkNCzi_gcENHzsMdKDClTGkAlzV4T8"/>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Check historical data for MBM Jodhpur and CTAE Udaipur to refine your choices based on your rank.</p>
+</div>
+<div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant hover:shadow-md transition-shadow flex flex-col">
+<h5 class="font-label-caps text-label-caps text-primary font-bold mb-4 tracking-widest flex items-center justify-between">
+                    UPCOMING DEADLINES
+                    <span class="material-symbols-outlined text-lg">event_available</span>
+</h5>
+<div class="space-y-4 flex-1">
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-3">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-primary font-semibold">Lock Choices</span>
+<span class="text-[10px] text-on-surface-variant font-label-caps">LAST OPPORTUNITY</span>
+</div>
+<span class="font-h3 text-h3 text-error font-bold">Aug 24</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-3">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-primary font-semibold">Seat Allotment</span>
+<span class="text-[10px] text-on-surface-variant font-label-caps">ROUND 1</span>
+</div>
+<span class="font-h3 text-h3 text-primary font-bold opacity-80">Aug 28</span>
+</div>
+</div>
+</div>
+<div class="bg-primary text-on-primary rounded-2xl p-6 border border-primary/20 hover:shadow-xl transition-all shadow-lg">
+<h5 class="font-label-caps text-label-caps text-secondary-fixed font-bold mb-4 tracking-widest">SUPPORT HUB</h5>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-secondary-fixed ring-1 ring-white/20">
+<span class="material-symbols-outlined text-3xl">forum</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-bold">Instant Resolution</p>
+<p class="font-body-sm text-body-sm text-on-primary/70">Average response &lt; 2 mins</p>
+</div>
+</div>
+<button class="w-full py-3.5 bg-secondary-container text-on-secondary-container font-button text-button rounded-xl hover:shadow-lg transition-all flex items-center justify-center gap-2 font-bold">
+<span class="material-symbols-outlined">chat_bubble</span>
+                    Start Live Chat
+                </button>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation for Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant flex justify-around py-3 z-[100] shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-[9px]">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary relative" href="#">
+<div class="absolute -top-1 w-8 h-1 bg-primary rounded-full"></div>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">list_alt</span>
+<span class="font-label-caps text-[9px] font-bold">Choices</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-caps text-[9px]">Status</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-[9px]">Profile</span>
+</a>
+</nav>
+</body></html>

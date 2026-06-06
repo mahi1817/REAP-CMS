@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>REAP 2024 - Admin Student Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&amp;family=Newsreader:ital,wght@0,500;0,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#002045",
+                        "on-secondary-fixed": "#241a00",
+                        "on-tertiary-fixed": "#191c1e",
+                        "surface-dim": "#ccdbf4",
+                        "on-surface": "#0d1c2f",
+                        "primary-container": "#1a365d",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#dde9ff",
+                        "surface-tint": "#455f88",
+                        background: "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#e0e3e5",
+                        "on-primary-container": "#86a0cd",
+                        "on-surface-variant": "#43474e",
+                        "inverse-surface": "#233144",
+                        "on-secondary-container": "#745c00",
+                        surface: "#f8f9ff",
+                        "surface-container": "#e6eeff",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#ebf1ff",
+                        "primary-fixed-dim": "#adc7f7",
+                        error: "#ba1a1a",
+                        "outline-variant": "#c4c6cf",
+                        tertiary: "#1d2123",
+                        "secondary-fixed": "#ffe088",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-background": "#0d1c2f",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-container": "#9c9fa1",
+                        outline: "#74777f",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-container-highest": "#d5e3fd",
+                        "secondary-container": "#fed65b",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "tertiary-container": "#333638",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "primary-fixed": "#d6e3ff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#c4c7c9",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#eff4ff",
+                        secondary: "#735c00",
+                        "inverse-primary": "#adc7f7",
+                        "on-primary-fixed": "#001b3c",
+                        "surface-variant": "#d5e3fd"
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        lg: "2rem",
+                        xl: "3rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "container-max": "1280px",
+                        "section-padding": "80px",
+                        "margin-mobile": "16px",
+                        gutter: "24px",
+                        base: "8px"
+                    },
+                    fontFamily: {
+                        "body-lg": ["Public Sans"],
+                        h1: ["Newsreader"],
+                        button: ["Public Sans"],
+                        "body-sm": ["Public Sans"],
+                        h2: ["Newsreader"],
+                        "label-caps": ["Public Sans"],
+                        h3: ["Newsreader"],
+                        "body-md": ["Public Sans"]
+                    },
+                    fontSize: {
+                        "body-lg": ["18px", {lineHeight: "1.6", fontWeight: "400"}],
+                        h1: ["48px", {lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "600"}],
+                        button: ["14px", {lineHeight: "1", fontWeight: "600"}],
+                        "body-sm": ["14px", {lineHeight: "1.5", fontWeight: "400"}],
+                        h2: ["36px", {lineHeight: "1.25", fontWeight: "600"}],
+                        "label-caps": ["12px", {lineHeight: "1", letterSpacing: "0.05em", fontWeight: "700"}],
+                        h3: ["28px", {lineHeight: "1.3", fontWeight: "500"}],
+                        "body-md": ["16px", {lineHeight: "1.5", fontWeight: "400"}]
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8f9ff;
+            color: #0d1c2f;
+        }
+        .sidebar-item-active {
+            background-color: #d6e3ff;
+            color: #001b3c;
+            border-left: 4px solid #002045;
+        }
+    </style>
+</head>
+<body class="font-body-md overflow-x-hidden">
+<!-- Utility Top Bar -->
+<div class="bg-primary text-on-primary text-[11px] font-label-caps py-1.5 px-gutter hidden md:block">
+<div class="max-w-container-max mx-auto flex justify-between items-center">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">mail</span>
+<span>support@reap2024.rajasthan.gov.in</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">call</span>
+<span>Helpline: 1800-123-4567</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<a class="hover:text-secondary-fixed" href="#">Twitter</a>
+<a class="hover:text-secondary-fixed" href="#">LinkedIn</a>
+<span class="opacity-30">|</span>
+<a class="hover:text-secondary-fixed" href="#">Hindi Version</a>
+</div>
+</div>
+</div>
+<!-- Enhanced Header -->
+<header class="sticky top-0 z-50 bg-white border-b border-outline-variant shadow-sm w-full">
+<div class="max-w-container-max mx-auto px-gutter h-20 flex items-center justify-between">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-on-primary font-h3">R</div>
+<span class="font-h3 text-[24px] font-semibold text-primary tracking-tight">REAP 2024</span>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<div class="relative group">
+<button class="flex items-center gap-1 text-on-surface font-button hover:text-primary transition-colors">
+                            COLLEGES <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-1 text-on-surface font-button hover:text-primary transition-colors">
+                            EXAMS <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-1 text-on-surface font-button hover:text-primary transition-colors">
+                            COURSES <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+<a class="text-on-surface font-button hover:text-primary transition-colors" href="#">NEWS</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-2 mr-4 text-on-surface-variant font-label-caps bg-surface-container px-3 py-1.5 rounded-full">
+<span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    SYSTEM LIVE
+                </div>
+</div>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- Refined Sidebar -->
+<aside class="w-20 bg-white border-r border-outline-variant flex flex-col items-center py-6 sticky top-0 h-screen z-50 relative"><!-- Sidebar Toggle Button -->
+<button class="absolute -right-3 top-6 w-6 h-6 bg-white border border-outline-variant rounded-full flex items-center justify-center shadow-sm hover:bg-surface-container-low transition-colors z-[60] group">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-primary">chevron_right</span>
+</button>
+<!-- Search Icon -->
+<div class="mb-8">
+<button class="w-12 h-12 flex items-center justify-center rounded-xl hover:bg-surface-container-low text-on-surface-variant transition-colors border border-outline-variant/30">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+<!-- Section: MAIN -->
+<div class="w-full flex flex-col items-center gap-1 mb-8">
+<p class="text-[10px] font-label-caps text-outline mb-2 tracking-tighter">MAIN</p>
+<nav class="flex flex-col gap-4 w-full items-center">
+<a class="flex flex-col items-center gap-1 group" href="#">
+<div class="w-12 h-12 flex items-center justify-center rounded-xl text-on-surface-variant group-hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">dashboard</span>
+</div>
+<span class="text-[9px] font-label-caps text-on-surface-variant">DASH</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<div class="w-12 h-12 flex items-center justify-center rounded-xl bg-primary-fixed text-on-primary-fixed transition-all border-l-4 border-primary">
+<span class="material-symbols-outlined">person_search</span>
+</div>
+<span class="text-[9px] font-label-caps text-primary font-bold">STUDENTS</span>
+</a>
+</nav>
+</div>
+<!-- Section: MGMT -->
+<div class="w-full flex flex-col items-center gap-1 mb-8">
+<p class="text-[10px] font-label-caps text-outline mb-2 tracking-tighter">MGMT</p>
+<nav class="flex flex-col gap-4 w-full items-center">
+<a class="flex flex-col items-center gap-1 group" href="#">
+<div class="w-12 h-12 flex items-center justify-center rounded-xl text-on-surface-variant group-hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<span class="text-[9px] font-label-caps text-on-surface-variant">COLLEGES</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<div class="w-12 h-12 flex items-center justify-center rounded-xl text-on-surface-variant group-hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+</div>
+<span class="text-[9px] font-label-caps text-on-surface-variant">ALLOT</span>
+</a>
+</nav>
+</div>
+<!-- System Icons -->
+<div class="mt-auto flex flex-col items-center gap-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<!-- Bottom Profile Avatar -->
+<div class="pt-4 border-t border-outline-variant w-12 flex justify-center">
+<div class="w-10 h-10 rounded-xl overflow-hidden border-2 border-primary-fixed shadow-sm cursor-pointer hover:ring-2 hover:ring-primary/20 transition-all">
+<img alt="Admin" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ujxiUnsVPsHVRgQrFNmW5evWQ0kqCm1uchvJbZi-QW_ovX_3kG4Dyu6WSOk9ePoqneKijtKeH-Tp0W3be9fiJVKXBGdhJnevQ_KLssALsiN3T50bVRy95Z-056nSc0gzUxNjFPq4YS-wBGxgj3cEgA8V_EL-H17-Ce2hQYQvetyIjtPv3HaE1qQoKNKtwW20O5Z4xW44iADXM2SoQcXRnzQjEUjvr0fvQlkMFIpcH6FhlsBExSMuCwL5Ejzl9MskcfAhwOewsaLZhw"/>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 bg-background pt-8 pb-section-padding px-gutter flex-grow">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+<div>
+<nav class="flex items-center gap-2 text-on-surface-variant font-label-caps text-label-caps mb-2">
+<a class="hover:text-primary transition-colors" href="#">DASHBOARD</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">STUDENTS</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-bold">APPLICATION #REAP-2024-8842</span>
+</nav>
+<h1 class="font-h2 text-h2 text-primary">Aaryavardhan Singh Rathore</h1>
+<p class="text-on-surface-variant font-body-md mt-1">JEE Mains Score: 98.42 Percentile | Merit Rank: #142</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-3 border-2 border-primary text-primary font-button rounded transition-all hover:bg-surface-container-low active:scale-95">
+                        Notify Student
+                    </button>
+<button class="px-6 py-3 bg-secondary-container text-on-secondary-container font-button rounded transition-all hover:shadow-md active:scale-95">
+                        Save Changes
+                    </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Panel: Personal and Academic Info -->
+<div class="lg:col-span-5 space-y-6">
+<!-- Profile Summary Card -->
+<div class="bg-white border border-outline-variant rounded-lg overflow-hidden shadow-sm">
+<div class="bg-surface-container-low px-6 py-4 border-b border-outline-variant">
+<h3 class="font-h3 text-primary text-[20px] font-semibold">Personal Profile</h3>
+</div>
+<div class="p-6 space-y-6">
+<div class="flex items-start gap-4">
+<div class="w-24 h-24 rounded border border-outline-variant bg-surface-variant flex-shrink-0">
+<img alt="Student Photo" class="w-full h-full object-cover" data-alt="A clean, passport-style studio portrait of a young male student wearing a crisp white collared shirt, set against a neutral, soft grey-blue background. The lighting is flat and professional, suitable for official academic identification. The image conveys a sense of readiness and academic focus, aligning with a prestigious university admissions portal aesthetic." src="https://lh3.googleusercontent.com/aida/ADBb0ujw4GJlhv3VvICRlrzn0ydRanxkfc5LeRv6GL99iJdEwyxb89UcMfB4PzwkAcrKdUUDjb6BeK_gnsBR_8-mKFunjlsn7XkZpf0a4sBEXhhdBm-6dIjnqyuIynqy3XD3ZzvyGay-V8P5dgqQtTqouNfGEIhkPUdV1gZhX0x9UW0QGr27iS9Dqden-H5jdgrL4sVBSSoucUDLRpSeSRmxsGppJIviuCvwdfIiui9RgeqhkhaqENkNCzi_gcENHzsMdKDClTGkAlzV4T8"/>
+</div>
+<div class="space-y-1">
+<span class="block font-label-caps text-on-surface-variant">FULL NAME</span>
+<span class="block font-body-lg text-on-surface font-semibold">Aaryavardhan Singh Rathore</span>
+<span class="block font-label-caps text-on-surface-variant mt-2">FATHER'S NAME</span>
+<span class="block font-body-md text-on-surface">Rajveer Singh Rathore</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-y-6">
+<div>
+<span class="block font-label-caps text-on-surface-variant">DATE OF BIRTH</span>
+<span class="block font-body-md text-on-surface">14 July 2006</span>
+</div>
+<div>
+<span class="block font-label-caps text-on-surface-variant">CATEGORY</span>
+<span class="block font-body-md text-on-surface">General - EWS</span>
+</div>
+<div>
+<span class="block font-label-caps text-on-surface-variant">STATE DOMICILE</span>
+<span class="block font-body-md text-on-surface">Rajasthan</span>
+</div>
+<div>
+<span class="block font-label-caps text-on-surface-variant">GENDER</span>
+<span class="block font-body-md text-on-surface">Male</span>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant">
+<span class="block font-label-caps text-on-surface-variant mb-2">CONTACT INFORMATION</span>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-[20px]">mail</span>
+<span class="font-body-md">aarya.rathore@edu.mail.com</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">phone_iphone</span>
+<span class="font-body-md">+91 98765 43210</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Academic Credentials -->
+<div class="bg-white border border-outline-variant rounded-lg overflow-hidden shadow-sm">
+<div class="bg-surface-container-low px-6 py-4 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-h3 text-primary text-[20px] font-semibold">Academic Merit</h3>
+<span class="bg-primary text-on-primary px-3 py-1 rounded text-label-caps">VERIFIED</span>
+</div>
+<div class="p-6">
+<table class="w-full">
+<thead class="border-b border-outline-variant text-label-caps text-on-surface-variant">
+<tr>
+<th class="text-left pb-2 font-bold">EXAMINATION</th>
+<th class="text-right pb-2 font-bold">SCORE/PERCENT</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr>
+<td class="py-3 font-body-md font-semibold">JEE Mains 2024</td>
+<td class="py-3 text-right font-body-md">98.42%ile</td>
+</tr>
+<tr>
+<td class="py-3 font-body-md">Class XII (CBSE)</td>
+<td class="py-3 text-right font-body-md">94.80%</td>
+</tr>
+<tr>
+<td class="py-3 font-body-md">Class X (CBSE)</td>
+<td class="py-3 text-right font-body-md">96.20%</td>
+</tr>
+</tbody>
+</table>
+<div class="mt-6 bg-surface-container-highest p-4 rounded-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">workspace_premium</span>
+<div>
+<p class="font-label-caps text-primary mb-1">CALCULATED REAP RANK</p>
+<p class="font-h3 text-primary font-bold">#142 <span class="text-body-sm font-normal text-on-surface-variant">(State Merit List)</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Panel: Interactive Choice Filling List -->
+<div class="lg:col-span-7">
+<div class="bg-white border border-outline-variant rounded-lg overflow-hidden shadow-sm h-full flex flex-col">
+<div class="bg-primary px-6 py-4 flex justify-between items-center">
+<h3 class="font-h3 text-on-primary text-[20px] font-semibold">Choice Filling Overrides</h3>
+<button class="flex items-center gap-2 bg-secondary-container text-on-secondary-container px-3 py-1.5 rounded-full text-label-caps hover:brightness-110">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+                                ADD CHOICE
+                            </button>
+</div>
+<div class="p-4 bg-surface-container-low border-b border-outline-variant flex gap-4">
+<div class="relative flex-1">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 border border-outline rounded bg-white text-body-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="Search Colleges or Branches..." type="text"/>
+</div>
+<select class="border border-outline rounded px-4 py-2 bg-white text-body-sm text-on-surface outline-none focus:border-primary">
+<option>Filter by Branch</option>
+<option>Computer Science</option>
+<option>Information Technology</option>
+<option>Electronics</option>
+</select>
+</div>
+<div class="flex-1 overflow-y-auto min-h-[400px]">
+<div class="p-6 space-y-4">
+<!-- Choice Item 1 -->
+<div class="group flex items-center gap-4 bg-white border border-outline-variant p-4 rounded-lg hover:border-primary-container transition-colors relative">
+<div class="flex flex-col items-center gap-1 text-on-surface-variant">
+<button class="material-symbols-outlined hover:text-primary transition-colors">keyboard_arrow_up</button>
+<span class="font-h3 text-primary/30 font-bold leading-none">01</span>
+<button class="material-symbols-outlined hover:text-primary transition-colors">keyboard_arrow_down</button>
+</div>
+<div class="flex-1">
+<h4 class="font-body-lg font-bold text-primary">MNIT Jaipur</h4>
+<p class="text-on-surface-variant font-body-md">Computer Science &amp; Engineering (General)</p>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 text-error hover:bg-error-container rounded-full">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Choice Item 2 -->
+<div class="group flex items-center gap-4 bg-white border border-outline-variant p-4 rounded-lg hover:border-primary-container transition-colors relative">
+<div class="flex flex-col items-center gap-1 text-on-surface-variant">
+<button class="material-symbols-outlined hover:text-primary transition-colors">keyboard_arrow_up</button>
+<span class="font-h3 text-primary/30 font-bold leading-none">02</span>
+<button class="material-symbols-outlined hover:text-primary transition-colors">keyboard_arrow_down</button>
+</div>
+<div class="flex-1">
+<h4 class="font-body-lg font-bold text-primary">MBM Engineering College, Jodhpur</h4>
+<p class="text-on-surface-variant font-body-md">Electronics &amp; Communication Engineering (General)</p>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 text-error hover:bg-error-container rounded-full">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Choice Item 3 -->
+<div class="group flex items-center gap-4 bg-white border border-outline-variant p-4 rounded-lg hover:border-primary-container transition-colors relative">
+<div class="flex flex-col items-center gap-1 text-on-surface-variant">
+<button class="material-symbols-outlined hover:text-primary transition-colors">keyboard_arrow_up</button>
+<span class="font-h3 text-primary/30 font-bold leading-none">03</span>
+<button class="material-symbols-outlined hover:text-primary transition-colors">keyboard_arrow_down</button>
+</div>
+<div class="flex-1">
+<h4 class="font-body-lg font-bold text-primary">MNIT Jaipur</h4>
+<p class="text-on-surface-variant font-body-md">Information Technology (SFS)</p>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 text-error hover:bg-error-container rounded-full">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Choice Item 4 -->
+<div class="group flex items-center gap-4 bg-white border border-outline-variant p-4 rounded-lg hover:border-primary-container transition-colors relative">
+<div class="flex flex-col items-center gap-1 text-on-surface-variant">
+<button class="material-symbols-outlined hover:text-primary transition-colors">keyboard_arrow_up</button>
+<span class="font-h3 text-primary/30 font-bold leading-none">04</span>
+<button class="material-symbols-outlined hover:text-primary transition-colors">keyboard_arrow_down</button>
+</div>
+<div class="flex-1">
+<h4 class="font-body-lg font-bold text-primary">CTA Udaipur</h4>
+<p class="text-on-surface-variant font-body-md">Computer Science &amp; Engineering (General)</p>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-on-surface-variant hover:text-primary rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 text-error hover:bg-error-container rounded-full">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-surface-container border-t border-outline-variant">
+<div class="flex items-center justify-between">
+<span class="text-body-sm text-on-surface-variant">Last updated by Admin (ID: 402) on 24 Oct, 02:15 PM</span>
+<div class="flex gap-4">
+<button class="text-primary font-button underline underline-offset-4 hover:text-primary-container">Reset to Student Original</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- System Activity Logs -->
+<section class="mt-12">
+<h3 class="font-h3 text-primary text-[24px] mb-6 font-semibold">Audit Trail</h3>
+<div class="bg-white border border-outline-variant rounded-lg overflow-hidden shadow-sm">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low font-label-caps text-on-surface-variant border-b border-outline-variant">
+<tr>
+<th class="px-6 py-4">TIMESTAMP</th>
+<th class="px-6 py-4">ACTION</th>
+<th class="px-6 py-4">USER</th>
+<th class="px-6 py-4">DETAILS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant font-body-sm">
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">Oct 24, 2024 11:30 AM</td>
+<td class="px-6 py-4"><span class="bg-surface-container-highest px-2 py-1 rounded">DOCUMENT_VERIFIED</span></td>
+<td class="px-6 py-4">System (Auto)</td>
+<td class="px-6 py-4">JEE Mains Scorecard verification successful via DigiLocker API.</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">Oct 23, 2024 04:45 PM</td>
+<td class="px-6 py-4"><span class="bg-surface-container-highest px-2 py-1 rounded">CHOICE_REORDER</span></td>
+<td class="px-6 py-4">Student</td>
+<td class="px-6 py-4">Student moved Choice #4 to Position #1.</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">Oct 20, 2024 09:12 AM</td>
+<td class="px-6 py-4"><span class="bg-surface-container-highest px-2 py-1 rounded">PROFILE_LOCKED</span></td>
+<td class="px-6 py-4">Admin (402)</td>
+<td class="px-6 py-4">Profile locked for final merit list generation phase.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+</div>
+<!-- Enhanced Footer -->
+<footer class="bg-primary py-12 px-gutter text-on-primary border-t border-primary-container relative z-10">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between gap-8">
+<div class="max-w-md">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-primary font-h3">R</div>
+<span class="font-h3 text-h3 font-semibold block">REAP 2024</span>
+</div>
+<p class="text-on-primary-container font-body-sm leading-relaxed">Rajasthan Engineering Admission Process. Managed by the Center for Electronic Governance (CEG), Jaipur for the Department of Technical Education, Government of Rajasthan.</p>
+<div class="mt-6 flex gap-4">
+<a class="w-8 h-8 rounded-full border border-primary-container flex items-center justify-center hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</a>
+<a class="w-8 h-8 rounded-full border border-primary-container flex items-center justify-center hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">alternate_email</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-x-12 gap-y-8">
+<div>
+<span class="block font-label-caps mb-4 text-secondary-fixed">INSTITUTION</span>
+<ul class="space-y-2 font-body-sm text-on-primary/80">
+<li><a class="hover:text-white transition-colors" href="#">Admin Dashboard</a></li>
+<li><a class="hover:text-white transition-colors" href="#">College Portal</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Seat Matrix</a></li>
+</ul>
+</div>
+<div>
+<span class="block font-label-caps mb-4 text-secondary-fixed">RESOURCES</span>
+<ul class="space-y-2 font-body-sm text-on-primary/80">
+<li><a class="hover:text-white transition-colors" href="#">Information Brochure</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Nodal Centers</a></li>
+<li><a class="hover:text-white transition-colors" href="#">FAQ</a></li>
+</ul>
+</div>
+<div class="hidden sm:block">
+<span class="block font-label-caps mb-4 text-secondary-fixed">CONTACT</span>
+<ul class="space-y-2 font-body-sm text-on-primary/80">
+<li>CEG, Jaipur</li>
+<li>Jhalana Institutional Area</li>
+<li>Jaipur, Rajasthan</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto mt-12 pt-8 border-t border-primary-container flex flex-col sm:flex-row justify-between items-center text-on-primary-container text-[11px] font-label-caps gap-4">
+<span>© 2024 REAP CENTRAL ADMISSIONS. ALL RIGHTS RESERVED.</span>
+<div class="flex gap-6">
+<a class="hover:text-white transition-colors" href="#">PRIVACY POLICY</a>
+<a class="hover:text-white transition-colors" href="#">TERMS OF SERVICE</a>
+<a class="hover:text-white transition-colors" href="#">SITEMAP</a>
+</div>
+</div>
+</footer>
+</body></html>

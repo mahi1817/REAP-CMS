@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  reapId            String   @unique
+  fullName          String
+  casteCategory     String?
+  jeePercentile     Float?
+  class12Percentage Float?
+  domicile          String?
+  exServiceman      Boolean  @default(false)
+  meritRank         Int?
+  choices           Choice[]
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Choice {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  preference  Int
+  institution String
+  branch      String
+  studentId   String   @db.ObjectId
+  student     Student  @relation(fields: [studentId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ApplicationStatus {
+  id                    String   @id @default(auto()) @map("_id") @db.ObjectId
+  studentId             String   @unique @db.ObjectId
+  registrationStatus    String   @default("Verified")
+  documentVerification  String   @default("Pending")
+  choiceFilling         String   @default("Pending")
+  lockedChoices         Boolean  @default(false)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
