@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+const API_URL = import.meta.env.VITE_API_URL;
 export default function Admin() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
   const [students, setStudents] = useState([]);
@@ -12,7 +12,7 @@ export default function Admin() {
 
   const fetchStudents = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/admin/students');
+      const response = awaitfetch($API_URL/api/admin/students);
       if (response.ok) {
         const data = await response.json();
         setStudents(data);
